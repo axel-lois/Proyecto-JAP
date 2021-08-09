@@ -6,15 +6,18 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
+  <link rel="shortcut icon" href="img/login.png">
   <title>eMercado - Todo lo que busques está aquí</title>
-
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <style>
-    html, body{
+    html,
+    body {
       height: 100%;
     }
 
@@ -25,7 +28,67 @@
       align-items: center;
       padding-top: 40px;
       padding-bottom: 40px;
-      background-color: #f5f5f5;
+      background: linear-gradient(#141e30, #e2d8d8);
+      font-family: sans-serif;
+      height: 100wh;
+    }
+
+    .login-form {
+      width: 400px;
+      height: 430px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-sizing: border-box;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 40px;
+
+    }
+
+    .login-form h1 {
+      font-weight: bold;
+      margin: 0 0 15px;
+      padding-top: 15PX;
+      color: white;
+      text-align: center;
+    }
+
+    .login-form input {
+      width: 100%;
+      padding: 10px 0;
+      font-size: 16px;
+      color: white;
+      border: none;
+      border-bottom: 1px solid white;
+      outline: none;
+      background: transparent;
+    }
+
+    .login-form .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      position: absolute;
+      top: -60px;
+      left: calc(50% - 50px);
+    }
+
+    .login-form .submit {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+
+    .enlaces a {
+      text-decoration: none;
+
+      color: white;
+      line-height: 20px;
+    }
+
+    .enlaces a:hover {
+      color: wheat;
     }
 
     .signin {
@@ -34,20 +97,45 @@
       padding: 15px;
       margin: auto;
     }
+
+    .btn {
+      width: 250px;
+    }
   </style>
+
+
 </head>
 
-<body class="text-center">
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 08/08/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+<body>
+
+  <div class="login-form">
+    <img class="avatar" src="img/login.png" alt="JaP Ecommerce">
+    <h1>Iniciar sesion</h1>
+    <form id="form">
+      <!--Nombre de usuario-->
+
+      <label for="email"></label>
+      <input type="text" name="email" id="email" placeholder="Email" required> <br>
+      <!--Contraseña-->
+      <label for="password"></label>
+      <input type="password" name="password" id="password" placeholder="Contraseña" required> <br>
+
+      <!--Submit-->
+      <div class="submit">
+        <a href="index.html"><button type="button" class=" btn btn-outline-light">Iniciar sesion</button> </a>
+      </div>
+      <div class="enlaces">
+        <br><a href="#">He olvidado mi contraseña.</a>
+        <br><a href="#">Crear una cuenta.</a>
+      </div>
+    </form>
+    <p class="warnings" id="warnings"></p>
+
+
   </div>
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
 </body>
+
 </html>
