@@ -79,6 +79,18 @@
       margin-top: 20px;
     }
 
+    .login-form .boton {
+      border: none !important;
+      outline: none;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+    }
+
+    .boton:hover {
+      color: skyblue;
+    }
+
 
     .enlaces a {
       text-decoration: none;
@@ -88,7 +100,7 @@
     }
 
     .enlaces a:hover {
-      color: wheat;
+      color: skyblue;
     }
 
     .signin {
@@ -96,10 +108,6 @@
       max-width: 330px;
       padding: 15px;
       margin: auto;
-    }
-
-    .btn {
-      width: 250px;
     }
   </style>
 
@@ -110,7 +118,7 @@
 
   <div class="login-form">
     <img class="avatar" src="img/login.png" alt="JaP Ecommerce">
-    <h1>Iniciar sesion</h1>
+    <h1>Iniciar sesión</h1>
     <form id="form">
       <!--Nombre de usuario-->
 
@@ -122,14 +130,13 @@
 
       <!--Submit-->
       <div class="submit">
-        <a href="index.html"><button type="button" class=" btn btn-outline-light">Iniciar sesion</button> </a>
+        <input onclick="redirect();" type="submit" class="boton" value="Iniciar sesión">
       </div>
       <div class="enlaces">
         <br><a href="#">He olvidado mi contraseña.</a>
         <br><a href="#">Crear una cuenta.</a>
       </div>
     </form>
-    <p class="warnings" id="warnings"></p>
 
 
   </div>
