@@ -8,17 +8,16 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 const email = document.getElementById("email");
 const pass = document.getElementById("password");
-const form = document.getElementById("form");
+
 
 form.addEventListener("submit",e=> {
     e.preventDefault();
     let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
     if (!regexEmail.test(email.value)) {
         alert("El email no es valido");
-        warnings+= `El email no es valido <br>`;
     }
     if (pass.value.length < 6) {
-        alert("La contraseña es muy corta");
+        alert("La contraseña debe tener al menos 6 caracteres.");
     }
     else {
         location.href= "index.html";
