@@ -23,8 +23,8 @@ function showProductsList(array){
     let htmlContentToAppend = "";
     for(let i = 0; i < array.length; i++){
         var product = array[i];
-
-        htmlContentToAppend += `
+        //Los agrego a la variable vacia
+        htmlContentToAppend += ` 
         <a href="category-info.html" class=" list-group-item-action">
         <div class="list-group-item list-group-item-action">
             <div class="row">
@@ -45,6 +45,6 @@ function showProductsList(array){
         </a>
         `
 
-        document.getElementById("product-list-container").innerHTML = htmlContentToAppend; //Los agrego con inner
+        document.getElementById("product-list-container").innerHTML = htmlContentToAppend; //Los agrego con inner al DOM
     }
 }
