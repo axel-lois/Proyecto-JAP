@@ -93,16 +93,6 @@ function relevancia(array) { // Por relevancia
 }
 
 
-
-
-
-
-
-
-
-
-
-
 //Funcion para mostrar los productos
 function showProductsList(array) {
 

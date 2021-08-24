@@ -6,7 +6,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-  <meta name="google-signin-client_id" content="423986863232-fdeq27m5u5ofll2mfqh071iduk0udiu4.apps.googleusercontent.com">
   <link rel="shortcut icon" href="img/login.png">
   <title>eMercado - Todo lo que busques está aquí</title>
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -139,24 +138,12 @@
         <br><a href="#">He olvidado mi contraseña.</a>
         <br><a href="#">Crear una cuenta.</a>
       </div>
-      <div class="g-signin2" data-onsuccess="onSignIn"></div>
     </form>
 
 
   </div>  
 
-  <script src="https://apis.google.com/js/platform.js" async defer></script>  
-  <!-- Google Auth -->
-  <script>
-    function onSignIn(googleUser) {
-      var profile = googleUser.getBasicProfile();
-      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-      console.log('Name: ' + profile.getName());
-      console.log('Image URL: ' + profile.getImageUrl());
-      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-      var id_token = googleUser.getAuthResponse().id_token;
-  }
-  </script>
+  
   
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
