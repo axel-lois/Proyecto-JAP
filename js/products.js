@@ -35,30 +35,71 @@ document.addEventListener("DOMContentLoaded", function (e) {
         showProductsList(productsArray);
     });
 
-    document.getElementById("rangeFilterCount").addEventListener("click", function(){ //Filtro en intervalo de precio
+    document.getElementById("rangeFilterCount").addEventListener("click", function () { //Filtro en intervalo de precio
         //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
         //de productos por categoría.
         minCount = document.getElementById("rangeFilterCountMin").value;
         maxCount = document.getElementById("rangeFilterCountMax").value;
 
-        if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0){
+        if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0) {
             minCount = parseInt(minCount);
         }
-        else{
+        else {
             minCount = undefined;
         }
 
-        if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0){
+        if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0) {
             maxCount = parseInt(maxCount);
         }
-        else{
+        else {
             maxCount = undefined;
         }
 
         showProductsList(productsArray);
     });
 
+    document.getElementById("buscador").addEventListener('keyup', filtrar); //buscador en tiempo real
+
+
 });
+
+
+function filtrar() {
+    const texto = document.getElementById("buscador").value.toLowerCase();
+    const agregar = document.getElementById("product-list-container");
+    agregar.innerHTML ='';
+    for (let producto of productsArray) {
+        let nombre = producto.name.toLowerCase();
+        let descripcion = producto.description.toLowerCase();
+        if (nombre.indexOf(texto) !== -1 || descripcion.indexOf(texto) !== -1) {
+            agregar.innerHTML += ` 
+            <a href="category-info.html" class=" list-group-item-action">
+            <div class="list-group-item list-group-item-action">
+                <div class="row">
+                    <div class="col-3">
+                    <img src="` + producto.imgSrc + `" alt="` + producto.description + `" class="img-thumbnail">
+                    </div>
+                    <div class="col">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1">`+ producto.name + `</h4>
+                            <small class="text-muted">` + producto.soldCount + ` vendidos</small>
+                            </div>
+                            <p class="text-muted">` + producto.description + ` </p>
+                            <p class = "mb-1 price">  `+ producto.currency + `   ` + producto.cost + `   </p>
+    
+                    </div>
+                </div>
+            </div>
+            </a>
+            `
+        }
+    }
+    if(agregar.innerHTML === "") {
+        agregar.innerHTML += `<p> No hay resultados para la busqueda </p>`;
+    }
+}
+
+
 
 
 function ordenarAsc(array) { //Orden ascendente
@@ -102,9 +143,9 @@ function showProductsList(array) {
 
         //Si cumple con los filtros de precio, muestra el producto, si no existe filtro de precio (undefined) muestra todos
         if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
-        ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
-        //Los agrego a la variable vacia
-        htmlContentToAppend += ` 
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))) {
+            //Los agrego a la variable vacia
+            htmlContentToAppend += ` 
         <a href="category-info.html" class=" list-group-item-action">
         <div class="list-group-item list-group-item-action">
             <div class="row">
@@ -125,7 +166,7 @@ function showProductsList(array) {
         </a>
         `
 
-        document.getElementById("product-list-container").innerHTML = htmlContentToAppend; //Los agrego con inner al DOM
-    }
+            document.getElementById("product-list-container").innerHTML = htmlContentToAppend; //Los agrego con inner al DOM
+        }
     }
 }

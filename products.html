@@ -21,6 +21,12 @@
       text-align: right;
       font-weight: bold;
     }
+    .realtime {
+      width: 400px;
+      position:relative;
+      top: 50px;
+      left: 20px;
+    }
   </style>
 
 
@@ -35,7 +41,8 @@
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
         Bienvenido
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -44,10 +51,17 @@
         <a class="dropdown-item" id="logout" href="login.html">Cerrar sesion</a>
       </div>
     </div>
-      
+
   </nav>
+  <div class="text-center p-4">
+    <h2>Productos</h2>
+    <p class="lead">Verás aquí todos los productos del sitio.</p>
+  </div>
   <div class="container p-5">
     <div class="row">
+      <div class="realtime">
+        <input type="search" id="buscador" class="form-control mb-3" placeholder="Buscador en tiempo real">
+      </div>
       <div class="col text-right">
         <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
           <label class="btn btn-light active" id="sortAsc">
