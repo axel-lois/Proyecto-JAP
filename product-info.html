@@ -13,6 +13,124 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <style>
+    #product-container {
+      margin-left: 320px;
+      font-family: Raleway;
+      width: 1010.25px;
+
+    }
+
+    #product-title {
+      font-weight: bold;
+    }
+
+    #comments-section {
+
+      margin-top: 10px;
+    }
+
+    #coment-container {
+      background-color: #f0f0f0a4;
+      border-radius: 5px;
+      margin-top: -10px
+    }
+
+
+    #form-input {
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      margin-top: -10px;
+      width: 960px;
+      height: 265px;
+      padding: 5px;
+    }
+
+    #form-input textarea {
+      resize: none;
+      margin-left: 30px;
+      margin-bottom: 5px;
+    }
+
+    #form-input h5 {
+      font-weight: bold;
+      color: #d72865;
+      margin-left: 30px;
+      margin-bottom: -10px;
+      margin-top: 10px;
+    }
+
+    #form-input #star-rating {
+      float: right;
+      position: relative;
+      top: -15px;
+      width: 40px;
+      left: 9px;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      
+    }
+
+    #form-input #label {
+      float: right;
+      position: relative;
+      top: -15px;
+      width: 40px;
+      left: -110px;
+      font-weight: bold;
+      color: #d72865;
+      line-height: 2em;
+    }
+
+    #form-input #submit {
+      margin-left: 30px;
+      background: #d72865;
+      border-radius: 2px;
+      border: none;
+      width: 94%;
+      height: 40px;
+      cursor: pointer;
+      color: white;
+    }
+
+    #form-input #submit:hover {
+      background-color: #b74877;
+    }
+
+    #username {
+      color: #d72865;
+      margin-left: 60px;
+      margin-top: 20px;
+      padding-top: 10px;
+      font-size: 20px;
+
+    }
+
+    #username span {
+      float: right;
+      margin-right: 5px;
+    }
+
+
+    #date {
+      color: grey;
+      margin-top: -20px;
+      margin-left: 60px;
+      font-size: 15px;
+    }
+
+    #testimonial {
+      color: black;
+      margin-left: 60px;
+      padding-bottom: 10px
+    }
+  </style>
+
+
+
 </head>
 
 <body>
@@ -23,7 +141,8 @@
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
         Bienvenido
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -33,12 +152,54 @@
       </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 19/09/2021) y Entrega 4 (Fecha de entrega: 03/10/2021).</p>
+  <div id="product-container" class="mt-5  p-4">
+    <h3 id="product-title">
+    </h3>
+    <hr my-3>
+    <dl>
+      <dt>Descripcion</dt>
+
+      <dd>
+        <p id="product-description">
+        </p>
+      </dd>
+
+      <dt>Categoria del producto</dt>
+      <dd>
+        <p id="product-category">
+        </p>
+      </dd>
+
+      <dt>Costo del producto</dt>
+      <dd>
+        <p id="product-cost">
+        </p>
+      </dd>
+
+      <dt>Cantidad de productos vendidos</dt>
+      <dd>
+        <p id="product-soldCount">
+        </p>
+      </dd>
+
+      <dt>Imagenes ilustrativas</dt>
+      <dd>
+        <div id="product-images" class="row text-center text-lg-left pt-2"></div>
+      </dd>
+    </dl>
+
+    <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Volver a la lista de productos</a>
+
+    <div id="comments-section">
+      <h3> <b> Testimonios </b></h3>
       <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+      <div id="form-input">
+        <h5>Dejanos un comentario</h5>
+        <label id="label" for="star-rating"> Estrellas:</label> <input type="number" max="5" min="1"
+          id="star-rating" value="1"><br>
+        <textarea name="comment" id="textarea" cols="109" rows="5"  placeholder="Deje aqui su comentario..."></textarea>
+        <input id="submit" type="submit" value="Enviar">
+      </div>
     </div>
   </div>
   <footer class="text-muted">

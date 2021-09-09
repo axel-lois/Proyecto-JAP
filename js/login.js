@@ -12,9 +12,9 @@ const form = document.getElementById("form");
 
 form.addEventListener("submit",e=> {
     e.preventDefault();
-    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
-    if (!regexEmail.test(email.value)) {
-        alert("El email no es valido");
+    
+    if (email.value.length < 6) {
+        alert("El usuario debe tener al menos 6 caracteres.");
     }
     else if (pass.value.length < 6) {
         alert("La contraseña debe tener al menos 6 caracteres.");
