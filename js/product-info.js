@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         var arreglo = JSON.parse(localStorage.getItem("login"));
         var nombre = arreglo[0].emvalue;
         let stars;
-        for(let j = 0; j <= starCount;j++) {
+        for(let j = 0; j < starCount;j++) {
             stars +=`<span class="fa fa-star checked"></span>`;
         }
         productComments.innerHTML+= `<div id="coment-container">

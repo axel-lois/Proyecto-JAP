@@ -21,15 +21,13 @@ form.addEventListener("submit",e=> {
     }
     else {
         location.href= "index.html";
+        var emvalue = document.getElementById("email").value;
+        var passvalue = document.getElementById("password").value;
+        array.push({emvalue,passvalue});
+        localStorage.setItem("login",JSON.stringify(array));
+        //Guardo los values en el localStorage para que no tenga que volver a iniciar sesion al ingresar datos
     }
-
-    //Guardo los values en el localStorage para que no tenga que volver a iniciar sesion al ingresar datos
-    var emvalue = document.getElementById("email").value;
-    var passvalue = document.getElementById("password").value;
-    array.push({emvalue,passvalue});
-    localStorage.setItem("login",JSON.stringify(array));
 })
-    
 });
 
 

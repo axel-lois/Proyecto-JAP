@@ -71,7 +71,7 @@
     input[type=number]::-webkit-inner-spin-button,
     input[type=number]::-webkit-outer-spin-button {
       -webkit-appearance: none;
-      
+
     }
 
     #form-input #label {
@@ -140,13 +140,13 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
       <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
         Bienvenido
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+        <a class="dropdown-item" href="cart.html">Mi carrito</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" id="logout" href="login.html">Cerrar sesion</a>
       </div>
@@ -195,12 +195,51 @@
       <hr>
       <div id="form-input">
         <h5>Dejanos un comentario</h5>
-        <label id="label" for="star-rating"> Estrellas:</label> <input type="number" max="5" min="1"
-          id="star-rating" value="1"><br>
-        <textarea name="comment" id="textarea" cols="109" rows="5"  placeholder="Deje aqui su comentario..."></textarea>
+        <label id="label" for="star-rating"> Estrellas:</label> <input type="number" max="5" min="1" id="star-rating"
+          value="1"><br>
+        <textarea name="comment" id="textarea" cols="109" rows="5" placeholder="Deje aqui su comentario..."></textarea>
         <input id="submit" type="submit" value="Enviar">
       </div>
     </div>
+    <hr>
+    <div class="container">
+      <h3 style="text-align: center;" > <b> Productos relacionados </b></h3> <br>
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <a href="product-info.htmlw"> <img src="img/prod2.jpg" class="d-block w-100" alt="..." height="450px" width="100px"> </a>
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 style="font-weight: bolder;" >Fiat Way</h5>
+                  <p>La versión de Fiat que brinda confort y a un precio accesible.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+               <a href="product-info.html"> <img src="img/prod4.jpg" class="d-block w-100" alt="..." height="450px" width="100px"></a>
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 style="font-weight: bolder;" >Peugeot 208</h5>
+                  <p>El modelo de auto que se sigue renovando y manteniendo su prestigio en comodidad.</p>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
   <footer class="text-muted">
     <div class="container">
