@@ -9,15 +9,20 @@ document.addEventListener("DOMContentLoaded", function(e){
 const email = document.getElementById("email");
 const pass = document.getElementById("password");
 const form = document.getElementById("form");
+const alert = document.getElementById("alerts");
 
 form.addEventListener("submit",e=> {
     e.preventDefault();
     
     if (email.value.length < 6) {
-        alert("El usuario debe tener al menos 6 caracteres.");
+        alert.innerHTML += `<div class="alert alert-danger" role="alert">
+        El nombre debe tener al menos 6 caracteres.
+      </div>`
     }
     else if (pass.value.length < 6) {
-        alert("La contraseña debe tener al menos 6 caracteres.");
+        alert.innerHTML += `<div class="alert alert-danger" role="alert">
+        La contraseña debe tener al menos 6 caracteres.
+      </div>`
     }
     else {
         location.href= "index.html";
