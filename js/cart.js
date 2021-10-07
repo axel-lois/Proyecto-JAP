@@ -1,10 +1,6 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-
-
-
-
 document.addEventListener("DOMContentLoaded", function (e) {
   //Atrapo nodos del DOM en variables.
   let desafiate = "https://japdevdep.github.io/ecommerce-api/cart/654.json"
@@ -13,11 +9,42 @@ document.addEventListener("DOMContentLoaded", function (e) {
   let subtotalCart = document.getElementsByClassName("subtotalCart");
   let totalCart = document.getElementsByClassName("totalCart");
   let tbody = document.getElementById("table-body");
+  let metodoDeEnvio = document.getElementsByClassName("form-check-input");
+  let metodoDePago = document.getElementsByClassName("pagoInput");
   let tot = 500200; //Variable global para eliminarProducto inicializada con el valor inicial del carrito.
   //Invoco a la funcion principal
   carrito(desafiate);
 
-
+  function envio(info) { //Funcion para actualizar total en funcion al metodo de envio seleccionado.
+    if (metodoDeEnvio[0].checked) { //Necesito que los cambios en el total se vean reflejados primero sin necesidad de tocar los checkbox, es decir, sin eventos.
+      let total = tot + (tot * 0.13); //Ya que si cambio la cantidad de productos, para que se refleje en el total el cambio debo hacer click todo el tiempo.
+      totalCart[0].innerHTML = `$${total}`;
+    }
+    else if (metodoDeEnvio[1].checked) {
+      let total = tot + (tot * 0.07);
+      totalCart[0].innerHTML = `$${total}`;
+    }
+    else if (metodoDeEnvio[2].checked) {
+      let total = tot + (tot * 0.03); 
+      totalCart[0].innerHTML = `$${total}`;
+    }
+    for (let i = 0; i < metodoDeEnvio.length; i++) { //Evento para cada checkbox (por si cambio de metodo de envio sobre la marcha)
+      metodoDeEnvio[i].addEventListener("click", () => {
+        if (i == 0) { //El primer checkbox es 13% del subtotal.
+          let total = tot + (tot * 0.13);
+          totalCart[0].innerHTML = `$${total}`;
+        }
+        else if (i == 1) { //El segundo checkbox es 7% del subtotawl.
+          let total = tot + (tot * 0.07);
+          totalCart[0].innerHTML = `$${total}`;
+        }
+        else if (i == 2) { //El tercer evento es 3% del subtotal.
+          let total = tot + (tot * 0.03);
+          totalCart[0].innerHTML = `$${total}`;
+        }
+      })
+    }
+  }
 
 
   //Con esta funcion eliminamos los productos del carrito
@@ -69,6 +96,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         total = array[0] + array[1]; //Arreglo local para sumar el total momentaneamente.
         subtotalCart[0].innerHTML = `$${total}`
         totalCart[0].innerHTML = `$${total}`
+        envio(info);
         //Actualizo subtotal y total de abajo de las rows.
       })
     }
@@ -115,7 +143,43 @@ document.addEventListener("DOMContentLoaded", function (e) {
         </td>
       </tr>`;
     }
-    tbody.innerHTML += `<tr>
+    tbody.innerHTML += `
+    <tr>
+      <td>   </td>
+      <td> <h5> Tipo de envio: </h5>  </td>
+      <td> <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
+      <label class="form-check-label" for="inlineRadio1"> <strong> Gold (13%) </strong></label>
+    </div>  </td>
+      <td> <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+      <label class="form-check-label" for="inlineRadio2"> <strong>Premium (7%) </strong></label>
+    </div> </td>
+      <td> <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+      <label class="form-check-label" for="inlineRadio3"> <strong>Estandar (3%)</strong> </label>
+    </div></td>
+    </tr>
+
+    <tr>
+    <td>   </td>
+      <td> <h5> Metodo de pago: </h5>  </td>
+      <td> <div class="form-check form-check-inline">
+      <input class="pagoInput" type="radio" name="opcionPago" id="pagoInput1" value="option1" checked>
+      <label class="form-check-label" for="pagoInput1"> <strong> Paypal </strong></label>
+    </div>  </td>
+      <td> <div class="form-check form-check-inline">
+      <input class="pagoInput" type="radio" name="opcionPago" id="pagoInput2" value="option2">
+      <label class="form-check-label" for="pagoInput2"> <strong>Mastercard </strong></label>
+    </div> </td>
+      <td> <div class="form-check form-check-inline">
+      <input class="pagoInput" type="radio" name="opcionPago" id="pagoInput3" value="option3" >
+      <label class="form-check-label" for="pagoInput3"> <strong>Visa</strong> </label>
+    </div></td>
+    </tr>
+    
+    
+      <tr>
         <td>   </td>
         <td>   </td>
         <td>   </td>
@@ -150,6 +214,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
       </tr>`;
     cambiarValores(info); //invoco a la funcion de cambiar valores en tiempo real
     eliminarProducto(info); //Invoco a la funcion que elimina los elementos del carrito
+    envio(info); //Invoco a la funcion que elimina los elementos del carrito
   }
 });
 
