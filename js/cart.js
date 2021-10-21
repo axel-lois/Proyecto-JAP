@@ -9,15 +9,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
   let subtotalCart = document.getElementsByClassName("subtotalCart");
   let totalCart = document.getElementsByClassName("totalCart");
   let tbody = document.getElementById("table-body");
+  let resumen = document.getElementById("resumen")
   let metodoDeEnvio = document.getElementsByClassName("form-check-input");
-  let metodoDePago = document.getElementsByClassName("pagoInput");
-  let tot = 500200; //Variable global para eliminarProducto inicializada con el valor inicial del carrito.
-  //Invoco a la funcion principal
-  carrito(desafiate);
 
-  function envio(info) { //Funcion para actualizar total en funcion al metodo de envio seleccionado.
+
+  function envio(tot) { //Funcion para actualizar total en funcion al metodo de envio seleccionado.
+
     if (metodoDeEnvio[0].checked) { //Necesito que los cambios en el total se vean reflejados primero sin necesidad de tocar los checkbox, es decir, sin eventos.
-      let total = tot + (tot * 0.13); //Ya que si cambio la cantidad de productos, para que se refleje en el total el cambio debo hacer click todo el tiempo.
+      let total = tot + (tot * 0.15); //Ya que si cambio la cantidad de productos, para que se refleje en el total el cambio debo hacer click todo el tiempo.
       totalCart[0].innerHTML = `$${total}`;
     }
     else if (metodoDeEnvio[1].checked) {
@@ -25,13 +24,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
       totalCart[0].innerHTML = `$${total}`;
     }
     else if (metodoDeEnvio[2].checked) {
-      let total = tot + (tot * 0.03); 
+      let total = tot + (tot * 0.05);
       totalCart[0].innerHTML = `$${total}`;
     }
     for (let i = 0; i < metodoDeEnvio.length; i++) { //Evento para cada checkbox (por si cambio de metodo de envio sobre la marcha)
       metodoDeEnvio[i].addEventListener("click", () => {
         if (i == 0) { //El primer checkbox es 13% del subtotal.
-          let total = tot + (tot * 0.13);
+          let total = tot + (tot * 0.15);
           totalCart[0].innerHTML = `$${total}`;
         }
         else if (i == 1) { //El segundo checkbox es 7% del subtotawl.
@@ -39,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
           totalCart[0].innerHTML = `$${total}`;
         }
         else if (i == 2) { //El tercer evento es 3% del subtotal.
-          let total = tot + (tot * 0.03);
+          let total = tot + (tot * 0.05);
           totalCart[0].innerHTML = `$${total}`;
         }
       })
@@ -48,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 
   //Con esta funcion eliminamos los productos del carrito
-  function eliminarProducto(info) {
+  function eliminarProducto(info,tot) {
     //Atrapo las rows y los botones
     let row = document.getElementsByClassName("product-row");
     let botones = document.getElementsByClassName("remover");
@@ -73,8 +72,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
   //Con esta funcion cambiamos los valores del carrito en tiempo real.
   function cambiarValores(info) {
-    let array = [200, 500000]; //Podria inicializarlo con un bucle y los valores del arreglo de objetos pero asi es mas rapido.
+    let array = [];
     let total = 0;
+    for(let i = 0; i < info.length; i++) {
+      if(info[i].currency == "USD") {
+        array.push(info[i].unitCost * info[i].count * 40)
+      }
+      else {
+        array.push(info[i].unitCost * info[i].count)
+      }
+    }
+
     for (let i = 0; i < valor.length; i++) {
       valor[i].addEventListener("keyup", (evento) => {
         if (evento.key == "Backspace" || evento.key == "-" || evento.key == "+" || evento.key == "." || evento.key == ",") { //Que al borrar o poner simbolos ponga 0 en cantidad
@@ -92,12 +100,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
             array[i] = valor[i].value * info[i].unitCost;
           }
         }
-        tot = array[0] + array[1]; //Esta variable nos sirve para eliminarProducto.
-        total = array[0] + array[1]; //Arreglo local para sumar el total momentaneamente.
+        total = array[0] + array[1]; //Arreglo local para sumar el total
         subtotalCart[0].innerHTML = `$${total}`
         totalCart[0].innerHTML = `$${total}`
-        envio(info);
         //Actualizo subtotal y total de abajo de las rows.
+        envio(total); //Invoco envio para que se actualice el calculo del envio con el nuevo total.
+        eliminarProducto(info,total); //Invoco eliminarProducto para que se actualicen los totales al eliminar.
       })
     }
   }
@@ -108,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     let info = await getJSONData(url); //Hago una peticion a un JSON
     info = info.data.articles; //Arreglo de objetos
     let total = 0;
-    for (let i = 0; i < info.length; i++) {//Muestro todos los elementos que quedaron en mi arreglo 
+    for (let i = 0; i < info.length; i++) {//Muestro todos los elementos que quedaron en mi arreglo
       let precioUnitario = info[i].unitCost;
       let moneda = info[i].currency;
       let cantidad = info[i].count;
@@ -141,81 +149,49 @@ document.addEventListener("DOMContentLoaded", function (e) {
             <span class="glyphicon glyphicon-remove"></span> Remover
           </button>
         </td>
-      </tr>`;
+      </tr>
+      `;
     }
-    tbody.innerHTML += `
-    <tr>
-      <td>   </td>
-      <td> <h5> Tipo de envio: </h5>  </td>
-      <td> <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
-      <label class="form-check-label" for="inlineRadio1"> <strong> Gold (13%) </strong></label>
-    </div>  </td>
-      <td> <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2"> <strong>Premium (7%) </strong></label>
-    </div> </td>
-      <td> <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" >
-      <label class="form-check-label" for="inlineRadio3"> <strong>Estandar (3%)</strong> </label>
-    </div></td>
-    </tr>
+    resumen.innerHTML += `
+    <hr>
+    <div>
+    <h2 style="position: relative;left:20px;">Tipo de envio:</h2>
+  </div>
+  <div style="position: relative; left: 50px; top:0px;">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
+    <label class="form-check-label" for="inlineRadio1"> <strong> Premium 15% (2 a 5 días) </strong></label>
+  </div>
+  <div style="position: relative; left: 50px;top:0px;">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+    <label class="form-check-label" for="inlineRadio2"> <strong>Express 7% (5 a 8 días) </strong></label>
+  </div>
+  <div style="position: relative; left: 50px;top:0px;">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+    <label class="form-check-label" for="inlineRadio3"> <strong>Estandar 5% (12 a 15 días) </strong> </label>
+  </div>
 
-    <tr>
-    <td>   </td>
-      <td> <h5> Metodo de pago: </h5>  </td>
-      <td> <div class="form-check form-check-inline">
-      <input class="pagoInput" type="radio" name="opcionPago" id="pagoInput1" value="option1" checked>
-      <label class="form-check-label" for="pagoInput1"> <strong> Paypal </strong></label>
-    </div>  </td>
-      <td> <div class="form-check form-check-inline">
-      <input class="pagoInput" type="radio" name="opcionPago" id="pagoInput2" value="option2">
-      <label class="form-check-label" for="pagoInput2"> <strong>Mastercard </strong></label>
-    </div> </td>
-      <td> <div class="form-check form-check-inline">
-      <input class="pagoInput" type="radio" name="opcionPago" id="pagoInput3" value="option3" >
-      <label class="form-check-label" for="pagoInput3"> <strong>Visa</strong> </label>
-    </div></td>
-    </tr>
-    
-    
-      <tr>
-        <td>   </td>
-        <td>   </td>
-        <td>   </td>
-        <td>
-          <h5>Subtotal</h5>
-        </td>
-        <td class="text-right">
-          <h5><strong class="subtotalCart"> $${total}</strong></h5>
-        </td>
-      </tr>
-      <tr>
-        <td>   </td>
-        <td>   </td>
-        <td>   </td>
-        <td>
-          <h3>Total</h3>
-        </td>
-        <td class="text-right">
-          <h3 ><strong class="totalCart">$${total}</strong></h3>
-        </td>
-      </tr>
-      <tr>
-        <td>   </td>
-        <td>   </td>
-        <td>   </td>
-        <td>   </td>
-        <td>
-          <button onclick="location.href='sell.html'" type="button" id="comprar" class="btn btn-success">
-            Comprar <span class="glyphicon glyphicon-play"></span>
-          </button>
-        </td>
-      </tr>`;
+
+  <h2 style="position: relative; top:20px;left:20px">Datos de envio:</h2>
+  <form style="position: relative; top:20px;left:20px">
+    <input  style="width: 300px; "type="text" class="form-control mt-2" placeholder="Direccion" required>
+    <input  style="width: 300px;"type="text" class="form-control mt-2" placeholder="Pais" required>
+
+  </form>
+  </div>
+  <div id="tas" style="position: relative; left: 440px;bottom:250px;   width:300px">
+    <h2>Resumen</h2>
+
+    <h5> Subtotal: <strong class="subtotalCart"> $${total}</strong></h5>
+    <h3> Total: <strong class="totalCart">  $${total}</strong></h3>
+    <button type="button" style="width:250px; position:relative;top:15px; right:30px;" id="comprar" class="btn btn-success">
+      Comprar <span class="glyphicon glyphicon-play"></span>
+    </button>
+  </div>`;
     cambiarValores(info); //invoco a la funcion de cambiar valores en tiempo real
-    eliminarProducto(info); //Invoco a la funcion que elimina los elementos del carrito
-    envio(info); //Invoco a la funcion que elimina los elementos del carrito
+    eliminarProducto(info,total); //Invoco a la funcion que elimina los elementos del carrito
+    envio(total); //Invoco a la funcion que elimina los elementos del carrito
   }
+    carrito(desafiate);
 });
 
 

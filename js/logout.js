@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(e){
     document.getElementById("logout").addEventListener("click", function() {
-        localStorage.clear();
+        localStorage.removeItem("login");
     })
     var arreglo = JSON.parse(localStorage.getItem("login"));
     var nombre = arreglo[0].emvalue;

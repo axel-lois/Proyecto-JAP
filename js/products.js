@@ -66,31 +66,23 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 function filtrar() {
     const texto = document.getElementById("buscador").value.toLowerCase();
-    const agregar = document.getElementById("product-list-container");
+    const agregar = document.getElementById("row");
     agregar.innerHTML ='';
     for (let producto of productsArray) {
         let nombre = producto.name.toLowerCase();
         let descripcion = producto.description.toLowerCase();
         if (nombre.indexOf(texto) !== -1 || descripcion.indexOf(texto) !== -1) {
             agregar.innerHTML += ` 
-            <a href="product-info.html" class=" list-group-item-action">
-            <div class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                    <img src="` + producto.imgSrc + `" alt="` + producto.description + `" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ producto.name + `</h4>
-                            <small class="text-muted">` + producto.soldCount + ` vendidos</small>
-                            </div>
-                            <p class="text-muted">` + producto.description + ` </p>
-                            <p class = "mb-1 price">  `+ producto.currency + `   ` + producto.cost + `   </p>
-    
-                    </div>
-                </div>
-            </div>
+            <div class="col-md-4">
+            <a href="product-info.html" class="card mb-4 shadow-sm custom-card">
+              <img class="bd-placeholder-img card-img-top" src="${producto.imgSrc}">
+              <h5 class="m-3"><b>${producto.name}  (${producto.soldCount})</b></h5>
+              <div class="card-body">
+                <p class="card-text">${producto.description} <br>
+                <strong> ${producto.currency} ${producto.cost} </strong> </p>
+              </div>
             </a>
+        </div>
             `
         }
     }
@@ -146,27 +138,19 @@ function showProductsList(array) {
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))) {
             //Los agrego a la variable vacia
             htmlContentToAppend += ` 
-        <a href="product-info.html" class=" list-group-item-action">
-        <div class="list-group-item list-group-item-action">
-            <div class="row">
-                <div class="col-3">
-                <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
-                </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">`+ product.name + `</h4>
-                        <small class="text-muted">` + product.soldCount + ` vendidos</small>
-                        </div>
-                        <p class="text-muted">` + product.description + ` </p>
-                        <p class = "mb-1 price">  `+ product.currency + `   ` + product.cost + `   </p>
-
-                </div>
-            </div>
+            <div class="col-md-4">
+            <a href="product-info.html" class="card mb-4 shadow-sm custom-card">
+              <img class="bd-placeholder-img card-img-top" src="${product.imgSrc}">
+              <h5 class="m-3"> <b>${product.name} (${product.soldCount})</b> </h5>
+              <div class="card-body">
+                <p class="card-text">${product.description} <br>
+                <strong> ${product.currency} ${product.cost} </strong> </p>
+              </div>
+            </a>
         </div>
-        </a>
         `
 
-            document.getElementById("product-list-container").innerHTML = htmlContentToAppend; //Los agrego con inner al DOM
+            document.getElementById("row").innerHTML = htmlContentToAppend; //Los agrego con inner al DOM
         }
     }
 }

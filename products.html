@@ -27,6 +27,21 @@
       top: 50px;
       left: 20px;
     }
+    strong {
+      transition: all ease-in-out 0.3s;
+    }
+
+    strong:hover {
+      color:blue;
+      font-size: 18px;
+    }
+
+    @media screen and (max-width: 993px) {
+      .realtime {
+        display: none;
+      }
+    }
+
   </style>
 
 
@@ -83,10 +98,10 @@
           <div class="col">
             <p class="font-weight-normal text-right my-2">Precio:</p>
           </div>
-          <div class="col">
+          <div style="margin-right: 10px;" class="col">
             <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
           </div>
-          <div class="col">
+          <div style="margin-right: 30px;" class="col">
             <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
           </div>
           <div class="col-3 p-0">
@@ -98,7 +113,9 @@
         </div>
       </div>
     </div>
-    <div id="product-list-container"></div>
+    <div id="product-list-container" class="container">
+      <div class="row" id="row"></div>
+    </div>
   </div>
 
   <footer class="text-muted bg-light">

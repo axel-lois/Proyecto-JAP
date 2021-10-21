@@ -27,6 +27,63 @@
         font-size: 3.5rem;
       }
     }
+
+    body {
+      background: rgb(99, 39, 120)
+    }
+
+    .form-control:focus {
+      box-shadow: none;
+      border-color: #BA68C8
+    }
+
+    .profile-button {
+      background: rgb(99, 39, 120);
+      box-shadow: none;
+      border: none
+    }
+
+    .profile-button:hover {
+      background: #682773
+    }
+
+    .profile-button:focus {
+      background: #682773;
+      box-shadow: none
+    }
+
+    .profile-button:active {
+      background: #682773;
+      box-shadow: none
+    }
+
+    .back:hover {
+      color: #682773;
+      cursor: pointer
+    }
+
+    .labels {
+      font-size: 11px
+    }
+
+    .add-experience:hover {
+      background: #BA68C8;
+      color: #fff;
+      cursor: pointer;
+      border: solid 1px #BA68C8
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+      
+    }
+    #alertas {
+      width: 600px;
+      height: 100px;
+      margin: auto auto;
+    }
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -40,7 +97,8 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
         Bienvenido
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -51,13 +109,13 @@
       </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+  <div id="container" class="container p-5">
+    
+  </div>
+  <div id="alertas">
+  </div>
+  
+
   </div>
   <footer class="text-muted bg-light">
     <div class="container">
