@@ -11,7 +11,7 @@ let btn = document.getElementById("btn");
 
 function formControl() {
   if (inputs[0].value == "" || inputs[1].value == "" || inputs[2].value == "" || inputs[3].value == "" || inputs[4].value == "" || inputs[5].value == "" || inputs[6].value == "" || inputs[7].value == "" || inputs[8].value == "" || inputs[9].value == "") {
-    alerta.innerHTML = `<div class="alert alert-danger"  style= "position:absolute; top:850px; width:450px; left:890px;" role="alert">
+    alerta.innerHTML = `<div class="alert alert-danger"role="alert">
       <strong>Por favor llene todos los campos para continuar.</strong> `
     setTimeout(() => {
       alerta.innerHTML = "";
@@ -32,7 +32,7 @@ function formControl() {
       Adicional: inputs[9].value
     };
     localStorage.setItem("Profile", JSON.stringify(info));
-    alerta.innerHTML = `<div class="alert alert-success" style= "position:absolute; top:850px; width:450px; left:890px;" role="alert">
+    alerta.innerHTML = `<div class="alert alert-success" role="alert">
     <strong>Su perfil se ha actualizado correctamente. </strong>
   </div>`
   setTimeout(() => {

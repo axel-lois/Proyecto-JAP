@@ -138,7 +138,7 @@ function showProductsList(array) {
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))) {
             //Los agrego a la variable vacia
             htmlContentToAppend += ` 
-            <div class="col-md-4">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
             <a href="product-info.html" class="card mb-4 shadow-sm custom-card">
               <img class="bd-placeholder-img card-img-top" src="${product.imgSrc}">
               <h5 class="m-3"> <b>${product.name} (${product.soldCount})</b> </h5>

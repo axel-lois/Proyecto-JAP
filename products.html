@@ -21,27 +21,15 @@
       text-align: right;
       font-weight: bold;
     }
-    .realtime {
-      width: 400px;
-      position:relative;
-      top: 50px;
-      left: 20px;
-    }
+
     strong {
       transition: all ease-in-out 0.3s;
     }
 
     strong:hover {
-      color:blue;
+      color: blue;
       font-size: 18px;
     }
-
-    @media screen and (max-width: 993px) {
-      .realtime {
-        display: none;
-      }
-    }
-
   </style>
 
 
@@ -74,9 +62,7 @@
   </div>
   <div class="container p-5">
     <div class="row">
-      <div class="realtime">
-        <input type="search" id="buscador" class="form-control mb-3" placeholder="Buscador en tiempo real">
-      </div>
+
       <div class="col text-right">
         <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
           <label class="btn btn-light active" id="sortAsc">
@@ -92,16 +78,20 @@
       </div>
     </div>
     <div class="row justify-content-end">
-      <div class="col-md-6"></div>
+      <div class="col-md-6">
+        <div class="realtime">
+          <input type="search" id="buscador" class="form-control mb-3" placeholder="Buscador en tiempo real">
+        </div>
+      </div>
       <div class="col-md-6 col-sm-12 mb-1 container">
         <div class="row container p-0 m-0">
           <div class="col">
             <p class="font-weight-normal text-right my-2">Precio:</p>
           </div>
-          <div style="margin-right: 10px;" class="col">
+          <div class="col">
             <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
           </div>
-          <div style="margin-right: 30px;" class="col">
+          <div class="col">
             <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
           </div>
           <div class="col-3 p-0">
@@ -114,7 +104,9 @@
       </div>
     </div>
     <div id="product-list-container" class="container">
-      <div class="row" id="row"></div>
+      <div class="row" id="row">
+
+      </div>
     </div>
   </div>
 
