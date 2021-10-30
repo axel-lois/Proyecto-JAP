@@ -8,7 +8,8 @@
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
   <link rel="shortcut icon" href="img/login.png">
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+  <link rel="stylesheet" href="css/all.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
   <style>
@@ -32,29 +33,51 @@
       -webkit-appearance: none;
       margin: 0;
     }
-    .row{
-      background-color: #f0f1f4;
-      border-radius: 10px;
-      box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
-      width: 750px;
-      height: 810px;
-      position: relative;
-      left: 150px;
+
+    body {
+      background: #f4f5f7;
+      margin-top: 20px;
+    }
+
+    .cart-container {
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 30px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    .cart-container .cart-body {
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+      padding: 30px 0 20px;
+      margin: 20px 0 30px;
+    }
+
+    .remover {
+      font-size: 23px;
+      text-align: right;
+      cursor: pointer;
+    }
+
+    .alertaReset {
+      transform: translate(0%, 0) !important;
+      width: 100% !important;
+      left: -50% !important;
+      position: static;
     }
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
 </head>
-
 <body>
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+      <a class="py-2 d-none d-md-inline-block anchor" href="index.html">Inicio</a>
+      <a class="py-2 d-none d-md-inline-block anchor" href="categories.html">Categorías</a>
+      <a class="py-2 d-none d-md-inline-block anchor" href="products.html">Productos</a>
+      <a class="py-2 d-none d-md-inline-block anchor" href="sell.html">Vender</a>
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
         Bienvenido
       </a>
@@ -67,24 +90,136 @@
     </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="row">
-      <div class="col-sm-12 col-md-10 col-md-offset-1">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Producto</th>
-              <th>Cantidad</th>
-              <th class="text-center">Precio</th>
-              <th class="text-center">Subtotal</th>
-              <th> </th>
-            </tr>
-          </thead>
-          <tbody id="table-body">
-          </tbody>
-        </table>
-         <div id="resumen">
-        </div> 
+  <div class="container">
+    <div class="contentbar" style="margin-top: 5%;">
+      <!-- Start row -->
+      <div class="row">
+        <!-- Start col -->
+        <div class="col-md-12 col-lg-12 col-xl-12">
+          <div class="card m-b-30 border-1 mb-4" style="box-shadow: 0px 0px 10px 0px #272b30;">
+            <div class="card-header">
+              <h5 class="card-title text-center fw-bolder fs-3"><i class="fas fa-shopping-cart"> </i> Carrito de compras
+              </h5>
+            </div>
+            <div class="card-body">
+              <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-8">
+                  <div class="cart-container border-2" style="border-radius: .25rem;">
+                    <div class="cart-head">
+                      <div class="table-responsive">
+                        <table class="table table-borderless table-hover">
+                          <thead>
+                            <tr>
+                              <th scope="col">Accion</th>
+                              <th scope="col">Imagen</th>
+                              <th scope="col">Producto</th>
+                              <th scope="col">Cantidad</th>
+                              <th scope="col">Precio un.</th>
+                              <th scope="col" class="text-right">Total</th>
+                            </tr>
+                          </thead>
+                          <tbody id="table-body">
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="cart-body">
+                      <div class="row">
+                        <div class="col-md-4 col-sm-12">
+                          <div class="table-responsive">
+                            <table class="table table-borderless">
+                              <tbody id="resumen">
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12" id="envios">
+
+                        </div>
+                        <div class="col-md-4 col-sm-12 d-flex justify-content-md-center align-items-md-center">
+                          <button type="button" class="btn btn-dark p-2 mt-3 mb-md-5" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
+                            Elegir metodo de pago <i class="fas fa-money-bill"></i>
+                          </button>
+                          <!-- Modal -->
+                          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="staticBackdropLabel">Metodos de pago</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <h4 class=" mb-3"> Elegir metodo de pago:</h4>
+                                  <div class="my-3">
+                                    <div>
+                                      <input type="radio" name="formaDePago" class="form-check-input" value="option1"
+                                        checked>
+                                      <label for="" class="form-check-label ms-2"> <i class="fab fa-cc-visa"></i>
+                                        Visa</label>
+                                    </div>
+
+                                    <div>
+                                      <input type="radio" name="formaDePago" class="form-check-input" value="option2">
+                                      <label for="" class="form-check-label ms-2"><i class="fab fa-cc-mastercard"></i>
+                                        Mastercard</label>
+                                    </div>
+                                    <div>
+                                      <input type="radio" name="formaDePago" class="form-check-input" value="option3">
+                                      <label for="" class="form-check-label ms-2"><i class="fab fa-cc-paypal"></i>
+                                        Paypal</label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+                                  <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+                                    aria-label="Close">Continuar</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-12 d-flex flex-column">
+                          <h3 class="text-center fw-bold text-start text-sm-start text-md-center">Formulario de envio:
+                          </h3>
+                          <label for="inp1" class="form-check-label mb-2 mt-3 fs-5"> Calle y esquina
+                            <input type="text" id="inp1" class="form-control mt-1 xxd" placeholder="Calle...">
+                          </label>
+                          <label for="inp2" class="form-check-label mb-2 fs-5"> Numero de puerta
+                            <input type="text" id="inp2" class="form-control mt-1 xxd"
+                              placeholder="Numero de puerta...">
+                          </label>
+                          <label for="inp3" class="form-check-label mb-2 fs-5"> Barrio
+                            <input type="text" id="inp3" class="form-control mt-1 xxd" placeholder="Barrio...">
+                          </label>
+                          <label for="inp4" class="form-check-label mb-2 fs-5"> Departamento
+                            <input type="text" id="inp4" class="form-control mt-1 xxd" placeholder="Departamento...">
+                          </label>
+                          <label for="inp5" class="form-check-label mb-2 fs-5"> Codigo postal
+                            <input type="text" id="inp5" class="form-control mt-1 xxd" placeholder="Codigo postal...">
+                          </label>
+                          <div id="formcont"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cart-footer">
+                      <button class="btn btn-success my-1" onclick="formCont()">Comprar <i
+                          class="fas fa-arrow-right"></i> </button>
+                      <a href="products.html" type="button" class="btn btn-primary my-1"> Seguir comprando <i
+                          class="fas fa-shopping-basket"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -98,9 +233,10 @@
   </div>
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/all.min.js"></script>
   <script src="js/dropzone.js"></script>
-  <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/init.js"></script>
   <script src="js/logout.js"></script>
 
 </body>

@@ -8,7 +8,6 @@
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
   <link rel="shortcut icon" href="img/login.png">
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -27,8 +26,21 @@
     }
 
     strong:hover {
-      color: blue;
+      color: #0d6efd;
       font-size: 18px;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+
+    }
+    .vendidos{
+      transition: all ease-in-out 0.3s;
+    }
+
+    .vendidos:hover {
+      font-size: 22px;
+      color: #0d6efd;
     }
   </style>
 
@@ -39,11 +51,11 @@
 <body>
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+      <a class="py-2 d-none d-md-inline-block anchor" href="index.html">Inicio</a>
+      <a class="py-2 d-none d-md-inline-block anchor" href="categories.html">Categorías</a>
+      <a class="py-2 d-none d-md-inline-block anchor" href="products.html">Productos</a>
+      <a class="py-2 d-none d-md-inline-block anchor" href="sell.html">Vender</a>
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
         Bienvenido
       </a>
@@ -63,30 +75,36 @@
   <div class="container p-5">
     <div class="row">
 
-      <div class="col text-right">
+      <div class="col d-flex justify-content-end">
         <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+          <div>
           <label class="btn btn-light active" id="sortAsc">
-            <input type="radio" name="options" autocomplete="off" checked>Menor a mayor
+            <input type="radio" name="options" autocomplete="off" class="form-check-input" checked> <i class="fas fa-sort-up"></i> Menor a mayor
           </label>
+        </div>
+        <div>
           <label class="btn btn-light" id="sortDesc">
-            <input type="radio" name="options" autocomplete="off">Mayor a menor
+            <input type="radio" name="options" autocomplete="off" class="form-check-input"> <i class="fas fa-sort-down"></i> Mayor a menor
           </label>
+        </div>
+        <div>
           <label class="btn btn-light" id="sortBySoldOuts">
-            <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Relevancia
+            <input type="radio" name="options" autocomplete="off" class="form-check-input"><i class="fas fa-sort-amount-down mr-1"></i> Relevancia
           </label>
+        </div>
         </div>
       </div>
     </div>
     <div class="row justify-content-end">
       <div class="col-md-6">
         <div class="realtime">
-          <input type="search" id="buscador" class="form-control mb-3" placeholder="Buscador en tiempo real">
+          <input type="text" id="buscador" class="form-control mb-3" placeholder="Buscador en tiempo real">
         </div>
       </div>
       <div class="col-md-6 col-sm-12 mb-1 container">
         <div class="row container p-0 m-0">
           <div class="col">
-            <p class="font-weight-normal text-right my-2">Precio:</p>
+            <p class="font-weight-normal text-end my-2">Precio:</p>
           </div>
           <div class="col">
             <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
@@ -96,7 +114,7 @@
           </div>
           <div class="col-3 p-0">
             <div class="btn-group" role="group">
-              <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+              <button class="btn btn-primary btn-block" id="rangeFilterCount">Filtrar</button>
               <button class="btn btn-danger btn-sm" id="clearRangeFilter">Limpiar</button>
             </div>
           </div>

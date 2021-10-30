@@ -141,7 +141,7 @@ function showProductsList(array) {
             <div class="col-12 col-sm-12 col-md-6 col-lg-4">
             <a href="product-info.html" class="card mb-4 shadow-sm custom-card">
               <img class="bd-placeholder-img card-img-top" src="${product.imgSrc}">
-              <h5 class="m-3"> <b>${product.name} (${product.soldCount})</b> </h5>
+              <h5 class="m-3"> <b>${product.name} <span class="vendidos text-end"> (${product.soldCount} vendidos) </span> </b> </h5>
               <div class="card-body">
                 <p class="card-text">${product.description} <br>
                 <strong> ${product.currency} ${product.cost} </strong> </p>

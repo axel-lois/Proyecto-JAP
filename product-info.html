@@ -7,8 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
-
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +52,7 @@
 
     #form-input h5 {
       font-weight: bold;
-      color: #d72865;
+      color: #0d6efd;
       margin-left: 30px;
       margin-bottom: -10px;
       margin-top: 10px;
@@ -81,13 +79,13 @@
       width: 40px;
       left: -110px;
       font-weight: bold;
-      color: #d72865;
+      color: #0d6efd;
       line-height: 2em;
     }
 
     #form-input #submit {
       margin-left: 30px;
-      background: #d72865;
+      background: #0d6efd;
       border-radius: 2px;
       border: none;
       width: 94%;
@@ -97,11 +95,11 @@
     }
 
     #form-input #submit:hover {
-      background-color: #b74877;
+      background-color: #0d6efd;
     }
 
     #username {
-      color: #d72865;
+      color: #0d6efd;
       margin-left: 60px;
       margin-top: 20px;
       padding-top: 10px;
@@ -136,11 +134,11 @@
 <body>
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+      <a class="py-2 d-none d-md-inline-block anchor" href="index.html">Inicio</a>
+      <a class="py-2 d-none d-md-inline-block anchor" href="categories.html">Categorías</a>
+      <a class="py-2 d-none d-md-inline-block anchor" href="products.html">Productos</a>
+      <a class="py-2 d-none d-md-inline-block anchor" href="sell.html">Vender</a>
+      <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
         Bienvenido
       </a>
@@ -188,7 +186,7 @@
       </dd>
     </dl>
 
-    <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Volver a la lista de productos</a>
+    <a type="button" class="btn btn-primary btn-lg w-100" href="products.html">Volver a la lista de productos</a>
 
     <div id="comments-section">
       <h3> <b> Testimonios </b></h3>
@@ -206,35 +204,35 @@
       <h3 style="text-align: center;" > <b> Productos relacionados </b></h3> <br>
       <div class="row">
         <div class="col-sm-12">
-          <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-            </ol>
+          <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <a href="product-info.htmlw"> <img src="img/prod2.jpg" class="d-block w-100" alt="..." height="450px" width="100px"> </a>
+                <img src="img/prod2.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                  <h5 style="font-weight: bolder;" >Fiat Way</h5>
+                  <h5>Fiat Way</h5>
                   <p>La versión de Fiat que brinda confort y a un precio accesible.</p>
                 </div>
               </div>
               <div class="carousel-item">
-               <a href="product-info.html"> <img src="img/prod4.jpg" class="d-block w-100" alt="..." height="450px" width="100px"></a>
+                <img src="img/prod4.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                  <h5 style="font-weight: bolder;" >Peugeot 208</h5>
-                  <p>El modelo de auto que se sigue renovando y manteniendo su prestigio en comodidad.</p>
+                  <h5>Peugeot 208</h5>
+                  <p>Some representative placeholder content for the second slide.</p>
                 </div>
               </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
         </div>
       </div>

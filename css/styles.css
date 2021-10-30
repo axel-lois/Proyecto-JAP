@@ -139,3 +139,11 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.anchor {
+  text-decoration: none;
+}
+
+.anchor:hover {
+  color: #0d6efd;
+}
