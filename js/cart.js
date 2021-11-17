@@ -7,7 +7,6 @@ let tbody = document.getElementById("table-body");
 let resumen = document.getElementById("resumen");
 let envios = document.getElementById("envios");
 
-
 function formCont() {
   let inputs = document.getElementsByClassName("xxd");
   let alerta = document.getElementById("formcont");
@@ -21,15 +20,11 @@ function formCont() {
   }
 
   if (inputs[0].value == "" || inputs[1].value == "" || inputs[2].value == "" || inputs[3].value == "" || inputs[4].value == "" || valor[0].value == "" || valor[0].value == "0" || valor[1].value == "" || valor[1].value == "0") {
-    alerta.innerHTML = `
+    alerta.innerHTML = `  
     <div class="alert alert-danger alert-dismissible fade show alertaReset mt-2" id="danger" style="position: static;" role="alert">
       <strong>Cuidado!</strong> Aun tienes campos sin rellenar.
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>  
     </div>`
-    let danger = document.getElementById("danger");
-    setTimeout(() => {
-      danger.style.display = "none";
-    }, 1500);
   }
 
   else if (contador == row.length) { //Si todas las rows estan ocultas
@@ -38,10 +33,6 @@ function formCont() {
       <strong>No hay productos en el carrito.</strong>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>  
     </div>`
-    let danger = document.getElementById("danger");
-    setTimeout(() => {
-      danger.style.display = "none";
-    }, 1500);
   }
 
   else {
@@ -50,13 +41,9 @@ function formCont() {
       <strong>Compra realizada con éxito!</strong>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>`
-    let exito = document.getElementById("exito");
-    setTimeout(() => {
-      exito.style.display = "none"
-    }, 1500);
-
   }
 }
+
 document.addEventListener("DOMContentLoaded", function (e) {
 
   function envio(tot) { //Funcion para actualizar total en funcion al metodo de envio seleccionado.
@@ -129,7 +116,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
   //Con esta funcion cambiamos los valores del carrito en tiempo real.
   function cambiarValores(info) {
     let array = [];
-    let total = 0;
     for (let i = 0; i < info.length; i++) {
       if (info[i].currency == "USD") {
         array.push(info[i].unitCost * info[i].count * 40)
@@ -156,11 +142,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
             array[i] = valor[i].value * info[i].unitCost;
           }
         }
-        total = array[0] + array[1]; //Arreglo local para sumar el total
-        subtotalCart[0].innerHTML = `$${total}`
-        totalCart[0].innerHTML = `$${total}`
-        //Actualizo subtotal y total de abajo de las rows.
-        envio(total); //Invoco envio para que se actualice el calculo del envio con el nuevo total.
+        let total = 0;
+        for(let j = 0; j < valor.length; j++) { //Juntamos todos los subtotales en una variable
+          total+= array[j];
+        } 
+        subtotalCart[0].innerHTML = `$${total}` //Pintamos el subtotal
+        envio(total); //Invoco envio para que se actualice el calculo del envio con el nuevo total. Aca tambien se actualiza el total, el cual es subtotal + envio
         eliminarProducto(info, total); //Invoco eliminarProducto para que se actualicen los totales al eliminar.
       })
     }

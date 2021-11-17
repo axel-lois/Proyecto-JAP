@@ -8,8 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
-
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+  <link rel="stylesheet" href="css/all.min.css">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
   <style>
@@ -80,6 +79,56 @@
 
     }
 
+    #profilePhoto {
+      height: 150px;
+      width: 150px;
+      border: 7px solid #000;
+      border-radius: 50%;
+      box-sizing: content-box;
+      object-fit: cover !important;
+      box-shadow: 0px 10px 10px -6px black;
+    }
+
+    #profilePhoto img {
+      width: 102%;
+      height: 102%;
+      border-radius: 50%;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .custom-file-upload {
+      font-weight: bold;
+      border: 2px solid #ccc;
+      display: inline-block;
+      border-radius: 10px;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: all ease 0.4s;
+    }
+
+    .custom-file-upload:hover {
+      background-color: rgb(99, 39, 120);
+      color: white;
+    }
+
+    #btn {
+      color: black;
+      font-weight: bold;
+      border: 2px solid #ccc !important;
+      border-radius: 10px;
+      background-color: white !important;
+      padding: 6px 12px !important;
+      transition: all ease 0.4s;
+
+    }
+
+    #btn:hover {
+      background-color: rgb(99, 39, 120) !important;
+      color: white;
+    }
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -106,7 +155,67 @@
     </div>
   </nav>
   <div id="container" class="container p-5">
-    
+    <div class="container rounded bg-white mt-5 mb-5">
+      <div class="row" style="border: 1px solid #dee2e6; border-radius:10px">
+        <div class="col-lg-3 col-md-12 d-flex flex-column align-items-center border-end">
+          <span class="mt-5 fw-bold text-center" id="username"></span>
+          <div class="mt-1 mb-3 d-flex flex-column justify-content-end align-items-center" id="profilePhoto">
+            <img
+              src="https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg"
+              id="profileImg" alt="">
+          </div>
+          <label for="uploadPhoto" class="custom-file-upload mb-2">
+            <i class="fas fa-camera"></i> Actualizar perfil
+          </label>
+          <input type="file" class="uploadPhoto" id="uploadPhoto" accept="image/png,.jpeg,.jpg">
+
+        </div>
+        <div class="col-lg-5 col-md-12 border-end">
+          <div class="p-3 py-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="text-center">Informacion del perfil</h4>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-6"><label class="labels">Nombre</label><input type="text" class="form-control inp"
+                  placeholder="Primer nombre"></div>
+              <div class="col-md-6"><label class="labels">Apellido</label><input type="text" class="form-control inp"
+                  placeholder="Primer apellido"></div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-12"><label class="labels">Numero de telefono</label><input type="text"
+                  class="form-control inp" placeholder="Numero de telefono"></div>
+              <div class="col-md-12"><label class="labels">Edad</label><input type="number" class="form-control inp"
+                  placeholder="Edad" min="18"></div>
+              <div class="col-md-12"><label class="labels">Direccion</label><input type="text" class="form-control inp"
+                  placeholder="Direccion"></div>
+
+              <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control inp"
+                  placeholder="Email"></div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-6"><label class="labels">Pais</label><input type="text" class="form-control inp"
+                  placeholder="Pais"></div>
+              <div class="col-md-6"><label class="labels">Localidad</label><input type="text" class="form-control inp"
+                  placeholder="Localidad"></div>
+            </div>
+            <div class="mt-5 text-center"><button class="btn btn-primary profile-button" id="btn"
+                onclick="formControl()" type="button">  Guardar perfil</button>
+              </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12">
+          <div class="p-3 py-5">
+            <div class="d-flex justify-content-between align-items-center experience">
+              <h5 style="position: relative;left: 14px;">Adicional</h5>
+            </div><br>
+            <div class="col-md-12"><label class="labels">Codigo postal</label><input type="text"
+                class="form-control inp" placeholder="Codigo postal"></div> <br>
+            <div class="col-md-12"><label class="labels">Detalles adicionales</label><input type="text"
+                class="form-control inp" placeholder="Ingrese algun dato relevante"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div id="alertas">
@@ -135,7 +244,9 @@
       <div></div>
     </div>
   </div>
+  
   <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/all.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>

@@ -6,148 +6,91 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
+  <meta name="google-signin-client_id" content="1098730418043-usr723bkjkndfugv9bku45fh6ar265om.apps.googleusercontent.com">
+  <meta name="google-singin-scope" content="profile email">
   <link rel="shortcut icon" href="img/login.png">
   <title>eMercado - Todo lo que busques está aquí</title>
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="css/all.min.css">
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/signin.css" rel="stylesheet">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <style>
-    html,
-    body {
-      height: 100%;
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
     }
 
-    body {
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-align: center;
-      align-items: center;
-      padding-top: 40px;
-      padding-bottom: 40px;
-      background: linear-gradient(#141e30, #e2d8d8);
-      font-family: sans-serif;
-      height: 100wh;
-    }
-
-    .login-form {
-      width: 400px;
-      height: 430px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      box-sizing: border-box;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 40px;
-
-    }
-
-    .login-form h1 {
-      font-weight: bold;
-      margin: 0 0 15px;
-      padding-top: 15PX;
-      color: white;
-      text-align: center;
-    }
-
-    .login-form input {
-      width: 100%;
-      padding: 10px 0;
-      font-size: 16px;
-      color: white;
-      border: none;
-      border-bottom: 1px solid white;
-      outline: none;
-      background: transparent;
-    }
-
-    .login-form .avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      position: absolute;
-      top: -60px;
-      left: calc(50% - 50px);
-    }
-
-    .login-form .submit {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .login-form .boton {
-      border: none !important;
-      outline: none;
-      height: 40px;
-      background: rgba(0, 0, 0, 0.5);
-      color: white;
-    }
-
-    .boton:hover {
-      color: skyblue;
-    }
-
-
-    .enlaces a {
-      text-decoration: none;
-
-      color: white;
-      line-height: 20px;
-    }
-
-    .enlaces a:hover {
-      color: skyblue;
-    }
-
-    .signin {
-      width: 100%;
-      max-width: 330px;
-      padding: 15px;
-      margin: auto;
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
     }
   </style>
 
 
 </head>
 
-<body>
-
-  <div class="login-form" id="login-form">
-    <img class="avatar" src="img/login.png" alt="JaP Ecommerce">
-    <h1>Iniciar sesión</h1>
+<body class="text-center">
+  <main class="form-signin">
     <form id="form">
-      <!--Nombre de usuario-->
-
-      <label for="email"></label>
-      <input type="text" name="email" id="email" placeholder="Usuario" required> <br>
-      <!--Contraseña-->
-      <label for="password"></label>
-      <input type="password" name="password" id="password" placeholder="Contraseña" required> <br>
-
-      <!--Submit-->
-      <div class="submit">
-        <input type="submit" class="boton" value="Iniciar sesión">
+      <img class="mb-4" src="img/backgroundjap.jpg" alt="" width="72" height="57">
+      <h1 class="h3 mb-3 fw-normal">Iniciar sesión</h1>
+      <div class="form-floating">
+        <input type="text" class="form-control" id="email" placeholder="name@example.com">
+        <label for="floatingInput">Usuario</label>
       </div>
-      <!--Enlaces de decoracion-->
-      <div class="enlaces">
-        <br><a href="#">He olvidado mi contraseña.</a>
-        <br><a href="#">Crear una cuenta.</a>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="password" placeholder="Password">
+        <label for="floatingPassword">Contraseña</label>
       </div>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Recuerdame
+        </label>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
+        </div>
+        <div class="col-6">
+          <div class="g-signin2 text-center" style="height: 47%;width: 140px;" data-onsuccess="onSignIn"></div>
+        </div>
+
+      </div>
+      <div id="alerts" ></div>
     </form>
-  </div>
+    
+  </main>
 
-  <div id="alerts">
+  <script>  
+  function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log(id_token);
+    if (id_token) {
+      location.href = "index.html";
+      let emvalue = profile.getName();
+      // let email = profile.getEmail();
+      let array = [];
+      array.push({emvalue});
+      localStorage.setItem("login",JSON.stringify(array));
+    }
+    }
 
-  </div>
-
-
-
+  </script>
+  
+  <script src="js/all.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
+  <script src="js/logout.js"></script>
 </body>
-
 </html>
